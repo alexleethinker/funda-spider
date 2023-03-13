@@ -30,7 +30,10 @@ def fetch_search_page(page):
 
     price = []
     for i in r.html.find('div.search-result-content-inner div.search-result-info:nth-of-type(2)>span.search-result-price'):
-        price.append(i.text.split(' ')[1].replace(',',''))
+        try:
+            price.append(i.text.split(' ')[1].replace(',',''))
+        except:
+            price.append(i.text)
 
     living_area = []
     for i in r.html.find('ul.search-result-kenmerken'):
@@ -75,6 +78,6 @@ if __name__ == '__main__':
     r = session.get(base_url)
     max_page = int(r.html.find('a', containing='page')[0].attrs['data-pagination-page'])
 
-    for page in tqdm(range(1 , max_page + 1), desc = status + '-' + woon_type):
+    for page in tqdm(range(1051 , max_page + 1), desc = status + '-' + woon_type):
         fetch_search_page(page)
     
