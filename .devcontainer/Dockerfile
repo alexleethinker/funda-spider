@@ -6,4 +6,4 @@ FROM python:3.9.7
 #     apt-get -y clean && \
 #     rm -rf /var/lib/apt/lists/* 
 
-RUN pip --no-cache-dir install --upgrade notebook pandas requests beautifulsoup4
+RUN pip --no-cache-dir install --upgrade notebook pandas requests requests-html
